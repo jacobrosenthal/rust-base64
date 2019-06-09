@@ -62,6 +62,24 @@
     unsafe_code
 )]
 
+#![no_std]
+
+#[cfg(feature = "std")]
+#[macro_use]
+extern crate std;
+#[cfg(not(feature = "std"))]
+#[macro_use]
+extern crate alloc;
+
+#[cfg(feature = "std")]
+use std::string::String;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
+#[cfg(feature = "std")]
+use std::vec::Vec;
+#[cfg(not(feature = "std"))]
+use alloc::vec::Vec;
+
 extern crate byteorder;
 #[cfg(test)]
 #[macro_use]
@@ -73,6 +91,7 @@ doctest!("../README.md");
 mod chunked_encoder;
 pub mod display;
 mod tables;
+#[cfg(feature = "std")]
 pub mod write;
 
 mod encode;

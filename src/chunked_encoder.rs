@@ -1,6 +1,6 @@
+use {String, Config};
 use encode::{add_padding, encode_to_slice};
-use std::{cmp, str};
-use Config;
+use core::{cmp,str};
 
 /// The output mechanism for ChunkedEncoder's encoded bytes.
 pub trait Sink {
